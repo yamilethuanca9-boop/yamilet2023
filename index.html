@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Impuesto Tributario</title>
+
+</head>
+
+<body>
+
+    <h1>Cálculo de Impuesto</h1>
+
+    <label>Nombre del trabajador</label>
+
+    <br><br>
+
+    <input type="text" id="nombre">
+
+    <br><br>
+
+    <label>Sueldo mensual</label>
+
+    <br><br>
+
+    <input type="text" id="sueldo">
+
+    <br><br>
+
+    <button onclick="calcularImpuesto()">
+        Calcular
+    </button>
+
+    <br><br>
+
+    <div id="resultado"></div>
+
+    <script>
+
+        function calcularImpuesto() {
+
+            let nombre =
+                document.getElementById("nombre").value;
+
+            let sueldo =
+                parseFloat(document.getElementById("sueldo").value);
+
+            let impuesto = 0;
+
+            let estado = "";
+
+            if (sueldo >= 0 && sueldo <= 1500) {
+
+                impuesto = 0;
+                estado = "Exonerado";
+
+            }
+
+            else if (sueldo >= 1501 && sueldo <= 3000) {
+
+                impuesto = sueldo * 0.05;
+                estado = "Impuesto bajo";
+
+            }
+
+            else if (sueldo >= 3001 && sueldo <= 5000) {
+
+                impuesto = sueldo * 0.10;
+                estado = "Impuesto medio";
+
+            }
+
+            else if (sueldo >= 5001 && sueldo <= 8000) {
+
+                impuesto = sueldo * 0.15;
+                estado = "Impuesto alto";
+
+            }
+
+            else if (sueldo > 8000) {
+
+                impuesto = sueldo * 0.20;
+                estado = "Impuesto muy alto";
+
+            }
+
+            document.getElementById("resultado").innerHTML =
+
+                "Nombre: " + nombre +
+
+                "<br>Sueldo mensual: S/ " + sueldo.toFixed(2) +
+
+                "<br>Impuesto: S/ " + impuesto.toFixed(2) +
+
+                "<br>Estado tributario: " + estado;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
