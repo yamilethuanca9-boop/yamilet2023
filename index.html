@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Impuesto Tributario</title>
+    <title>Cálculo de Impuesto</title>
 
 </head>
 
@@ -51,11 +51,14 @@
 
             let impuesto = 0;
 
+            let porcentaje = "";
+
             let estado = "";
 
             if (sueldo >= 0 && sueldo <= 1500) {
 
                 impuesto = 0;
+                porcentaje = "0%";
                 estado = "Exonerado";
 
             }
@@ -63,6 +66,7 @@
             else if (sueldo >= 1501 && sueldo <= 3000) {
 
                 impuesto = sueldo * 0.05;
+                porcentaje = "5%";
                 estado = "Impuesto bajo";
 
             }
@@ -70,6 +74,7 @@
             else if (sueldo >= 3001 && sueldo <= 5000) {
 
                 impuesto = sueldo * 0.10;
+                porcentaje = "10%";
                 estado = "Impuesto medio";
 
             }
@@ -77,6 +82,7 @@
             else if (sueldo >= 5001 && sueldo <= 8000) {
 
                 impuesto = sueldo * 0.15;
+                porcentaje = "15%";
                 estado = "Impuesto alto";
 
             }
@@ -84,19 +90,40 @@
             else if (sueldo > 8000) {
 
                 impuesto = sueldo * 0.20;
+                porcentaje = "20%";
                 estado = "Impuesto muy alto";
 
             }
 
             document.getElementById("resultado").innerHTML =
 
-                "Nombre: " + nombre +
+                "<table border='1' cellpadding='10'>" +
 
-                "<br>Sueldo mensual: S/ " + sueldo.toFixed(2) +
+                "<tr>" +
 
-                "<br>Impuesto: S/ " + impuesto.toFixed(2) +
+                "<th>Nombre</th>" +
 
-                "<br>Estado tributario: " + estado;
+                "<th>Sueldo</th>" +
+
+                "<th>Impuesto</th>" +
+
+                "<th>Estado Tributario</th>" +
+
+                "</tr>" +
+
+                "<tr>" +
+
+                "<td>" + nombre + "</td>" +
+
+                "<td>S/ " + sueldo.toFixed(2) + "</td>" +
+
+                "<td>" + porcentaje + "</td>" +
+
+                "<td>" + estado + "</td>" +
+
+                "</tr>" +
+
+                "</table>";
 
         }
 
